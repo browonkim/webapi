@@ -9,7 +9,7 @@ class Todo {
     @Column(nullable = false)
     var id: Long? = null
 
-    @Column(nullable = false)
+    @Column
     var title: String? = null
 
     @Column

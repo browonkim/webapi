@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/todo")
 class TodoController constructor(val todoService: TodoService) {
 
-    @CrossOrigin(origins = ["*"])
+    @CrossOrigin
     @GetMapping
     fun getTodo(): ResponseEntity<Iterable<Todo>> {
         return todoService.getTodoElements()
     }
 
-    @CrossOrigin(origins = ["*"])
+    @CrossOrigin
     @PutMapping
-    fun updateTodo(@RequestParam todo: Todo): ResponseEntity<Todo> {
+    fun updateTodo(@RequestBody todo: Todo): ResponseEntity<Todo> {
         return todoService.updateTodoElement(todo)
     }
 
-    @CrossOrigin(origins = ["*"])
+    @CrossOrigin
     @PostMapping
-    fun insertTodo(@RequestParam todo: Todo): ResponseEntity<Todo> {
+    fun insertTodo(@RequestBody todo: Todo): ResponseEntity<Todo> {
         return todoService.insertTodoElement(todo)
     }
 
-    @CrossOrigin(origins=["*"])
+    @CrossOrigin
     @DeleteMapping
-    fun deleteTodo(todo: Todo): ResponseEntity<Boolean> {
+    fun deleteTodo(@RequestBody todo: Todo): ResponseEntity<Boolean> {
         return todoService.deleteTodoElement(todo)
     }
 }
