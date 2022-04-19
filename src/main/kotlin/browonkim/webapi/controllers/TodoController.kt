@@ -1,13 +1,16 @@
 package browonkim.webapi.controllers
 
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
+import browonkim.webapi.members.Todo
+import browonkim.webapi.service.TodoService
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
-@Controller("/todo")
-class TodoController {
+@RestController
+class TodoController constructor(val todoService: TodoService) {
 
-    @GetMapping
-    fun getTodo() {
-
+    @CrossOrigin(origins = ["*"])
+    @GetMapping("/todo")
+    fun getTodo(): ResponseEntity<Iterable<Todo>> {
+        return todoService.getTodoElement()
     }
 }
